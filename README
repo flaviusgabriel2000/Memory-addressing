@@ -1,35 +1,37 @@
-// Usturoi Flavius-Gabriel, 324CD
-// Memoria lui Biju
+// Memory addressing
 
 
-	Ideea generala a codului meu in vederea rezolvarii taskurilor a fost
-utilizarea datelor structurate, a operatiilor pe siruri, precum si adre-
-sarea memoriei. De asemenea, au fost folosite salturi conditionate si
-neconditionate in cadrul instructiunilor de buclare etc.
+	The general idea of my code to solve the tasks was to use structured data,
+string operations, and memory addressing. Also, conditional and unconditional jumps
+were used within looping instructions, etc.
 
-						REZOLVAREA TASKURILOR
+					IMPLEMENTATION
 
-1. ROTP		- Am creat o eticheta care joaca rolul unei bucle for (avand si 
-			  numele semnificativ de "loop"). Aici, asa cum cere si enuntul,
-			  se va efectua XOR intre byte-ul de la pasul curent din plaintext
-			  si byte-ul de la pasul curent din key-ul inversat. Rezultatul este
-			  pus in cyphertext, iar procesul se repeta pana la atingerea lungimii len;
+1. ROTP	- I have created a label that acts as a for loop (also 
+	  having the meaningful name "loop"). Here, as it is required,
+	  I performed a XOR between the byte from the current step in
+	  the plaintext and the byte from the current step in the reversed
+	  key. The result is put into the cyphertext, and the process is
+	  repeated until the length len is reached;
 
-2. Ages		- Si aici, tot procesul se desfasoara intr-o bucla a carei eticheta se nu-
-			  meste "loop". Initial, se vor compara anul curent cu anul de nastere al
-			  coechipierului. Daca anul curent este mai mic sau egal decat anul de nastere,
-			  atunci varsta coechipierului este 0 si trecem mai departe. Altfel, vom afla
-			  varsta "provizorie" a coechipierului facand diferenta. Este o varsta provizorie,
-			  deoarece vor exista cazuri in care luna/ziua de nastere a coechipierului curent
-			  este mai mare decat luna/ziua curenta si astfel va trebui sa decrementam varsta,
-			  ea nefiind inca implinita. Aceste cazuri sunt tratate in etichetele monthle,
-			  monthequal, dayless. Comentarii suplimentare sunt adaugate in sursa pentru o
-			  intelegere mai clara a codului;
+2. Ages	- Here too, the whole process takes place in a loop whose label is
+	  called "loop". Initially, I compare the current year with
+	  the teammate's birth year. If the current year is less than or equal
+	  to the birth year, then the teammate's age is 0 and we move on.
+	  Otherwise, we will find out the teammate's "provisional" age by
+	  taking the difference. It is a provisional age, because there will be
+	  cases in which the current teammate's birth month/day is greater than
+	  the current month/day and thus we will have to decrement the age,
+	  since it is not yet complete. These cases are handled in the monthle,
+	  monthequal, dayless labels. Additional comments are added in the source
+	  for a clearer understanding of the code;
 
-3. Columnar - In eticheta current_column_idx vom determina coloana din matrice care trebuie
-			  parcursa la pasul curent, ea fiind plasata in registrul edx. Mai departe, cu
-			  ajutorul lui edx vom obtine byte-ul din haystack care trebuie pus in ciphertext.
-			  In continuare, adaugam in edx lungimea cheii si astfel vom putea simula parcurgerea
-			  din linie in linie a coloanei curente. Aceasta adunare in edx a lungimii cheii se
-			  repeta pana depasim lungimea haystack-ului. Cand am depasit, trecem la urmatoarea
-			  coloana specificata de vectorul de ordine.
+3. Columnar - In the current_column_idx tag we will determine the column in the
+	      matrix that must be traversed at the current step, it being placed
+	      in the edx register. Further, with the help of edx we will get the
+	      byte from the haystack that must be put in the ciphertext. Next, we
+	      add the key length to edx and thus we will be able to simulate the
+	      traverse from line to line of the current column. This addition of
+	      the key length to edx is repeated until we exceed the length of the
+	      haystack. When we have exceeded, we move to the next column specified
+	      by the order vector.
