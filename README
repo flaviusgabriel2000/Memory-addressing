@@ -1,0 +1,35 @@
+// Usturoi Flavius-Gabriel, 324CD
+// Memoria lui Biju
+
+
+	Ideea generala a codului meu in vederea rezolvarii taskurilor a fost
+utilizarea datelor structurate, a operatiilor pe siruri, precum si adre-
+sarea memoriei. De asemenea, au fost folosite salturi conditionate si
+neconditionate in cadrul instructiunilor de buclare etc.
+
+						REZOLVAREA TASKURILOR
+
+1. ROTP		- Am creat o eticheta care joaca rolul unei bucle for (avand si 
+			  numele semnificativ de "loop"). Aici, asa cum cere si enuntul,
+			  se va efectua XOR intre byte-ul de la pasul curent din plaintext
+			  si byte-ul de la pasul curent din key-ul inversat. Rezultatul este
+			  pus in cyphertext, iar procesul se repeta pana la atingerea lungimii len;
+
+2. Ages		- Si aici, tot procesul se desfasoara intr-o bucla a carei eticheta se nu-
+			  meste "loop". Initial, se vor compara anul curent cu anul de nastere al
+			  coechipierului. Daca anul curent este mai mic sau egal decat anul de nastere,
+			  atunci varsta coechipierului este 0 si trecem mai departe. Altfel, vom afla
+			  varsta "provizorie" a coechipierului facand diferenta. Este o varsta provizorie,
+			  deoarece vor exista cazuri in care luna/ziua de nastere a coechipierului curent
+			  este mai mare decat luna/ziua curenta si astfel va trebui sa decrementam varsta,
+			  ea nefiind inca implinita. Aceste cazuri sunt tratate in etichetele monthle,
+			  monthequal, dayless. Comentarii suplimentare sunt adaugate in sursa pentru o
+			  intelegere mai clara a codului;
+
+3. Columnar - In eticheta current_column_idx vom determina coloana din matrice care trebuie
+			  parcursa la pasul curent, ea fiind plasata in registrul edx. Mai departe, cu
+			  ajutorul lui edx vom obtine byte-ul din haystack care trebuie pus in ciphertext.
+			  In continuare, adaugam in edx lungimea cheii si astfel vom putea simula parcurgerea
+			  din linie in linie a coloanei curente. Aceasta adunare in edx a lungimii cheii se
+			  repeta pana depasim lungimea haystack-ului. Cand am depasit, trecem la urmatoarea
+			  coloana specificata de vectorul de ordine.
